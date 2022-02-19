@@ -66,18 +66,18 @@ Extend your Part 1 and Part 2 solutions to include all the film fields:
 * Add an additional filter for rating. The user should be able to select a minimum rating and only films with that rating or higher should be shown.
 
 ### Extension 2
-* Add an additional genre dropdown filter 
-* Consider how
+* Add an additional genre dropdown filter. When a genre is selected, only films in that genre should be shown.
+* Now you have 3 potential filter conditions, is there a better way you could filter your list rather than conditional rendering?
 
 ## Arrays and State: Updating and Removing Items
 
 ### Part 1
 * Beside each unwatched film in the list, add a button with the label "Set As Watched"
-* When the button is clicked, update the film to set the `watched` property to `true`.
+* When the button is clicked, update the film to set the `watched` property to `true` and update the `films` array.
 * Remember to do this immutably. You should see the list of films update as soon as the user pressed the button.
 
 ### Part 2
-* Beside each film add a "delete" link. When the user presses the link, remove the film from the list of films.
+* Beside each film add a `delete` link. When the user presses the link, remove the film from the list of films.
 
 ### Extension 1
 * Add an "Edit" link beside each film. When the user clicks the link, update the Add Film form to allow the user to edit any value of the selected film.
