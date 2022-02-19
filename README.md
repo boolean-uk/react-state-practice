@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# React State Practice
+This is a multi-step exercise to practice implementing state with react. What you should be able to do at the end of this exercise:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* Define state using the `setState` hook
+* Update state in response to user input using controlled components
+* Capture form submit events in React
+* Render an array of items in JSX using `map`
+* Implement conditional rendering in JSX
+* Correctly manage an array of items with React state
+* Explain how to add, remove and update items in an array immutably
 
-## Available Scripts
+Note that for this exercise, we using a single App component that contains everything so that we can focus on using state only. 
 
-In the project directory, you can run:
+## Forms, Inputs and State
 
-### `npm start`
+### Part 1
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Add state to the application in App.js to store each of the below form fields:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Film Name
+* Film Watched
 
-### `npm test`
+You can ignore the other fields for now. The HTML has already been provided, you need to add the state and implement the controlled inputs for each state. For each of the items in the list above:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Think about what data type best represents the state
+* Declare your state using the `useState` function
+* Implement your controlled input using the state
+* Check your controlled input is working with `console.log`
 
-### `npm run build`
+### Part 2
+Once you have implemented state for all the form inputs above:
+* Implement the form `submit` event listener. 
+* Inside the event listener, create a `film` object with the following fields, populated from the state:
+  * `name`
+  * `watched `
+* Clear the values on the form
+* For now, simply log the film object using `console.log`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Extension 1
+Extend your Part 1 and Part 2 solutions to include all the film fields:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Film Genre
+* Film Rating
+* Film Description
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Arrays and State: Adding Items
 
-### `npm run eject`
+* Define a new state property, `films`, using `useState`
+* Set the initial value of the state to an empty array
+* Inside the `submit` event handler for the form, update the `films` state with the new film. Remember to do this immutably!
+* Update the `Total Films` paragraph in the JSX to display the total numbers of films only, using the `.length` property from the `films` state.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Rendering and State
+### Part 1
+* Use the `map` function to iterate through each of the films in the `films` state. 
+* For each film, start by simply displaying the film name and if the film has been watched or not.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Part 2
+* Make the `Show Watched Only` checkbox functional
+* Make the checkbox a controlled component with a new state property to store it's status
+* When the box is checked, use conditional rendering to show only films that have been watched
+* Using conditional rendering, if a film has been watched, display a ✅ emoji next to it
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Extension 1
+* Expand your film list item to display rating, genre and description for each film. Don't worry about trying to make it look "good". 
+* Add an additional filter for rating. The user should be able to select a minimum rating and only films with that rating or higher should be shown.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Extension 2
+* Add an additional genre dropdown filter 
+* Consider how
 
-## Learn More
+## Arrays and State: Updating and Removing Items
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Part 1
+* Beside each unwatched film in the list, add a button with the label "Set As Watched"
+* When the button is clicked, update the film to set the `watched` property to `true`.
+* Remember to do this immutably. You should see the list of films update as soon as the user pressed the button.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Part 2
+* Beside each film add a "delete" link. When the user presses the link, remove the film from the list of films.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Extension 1
+* Add an "Edit" link beside each film. When the user clicks the link, update the Add Film form to allow the user to edit any value of the selected film.
+* Update the form heading and submit button label to show the user is editing a film rather than adding
+* When the form is submitted, update the existing film object in the array immutably. You should see the list of films update.
+* If the user is editing, add a cancel button that when clicked clears the form and causes it to work like an add form again.
